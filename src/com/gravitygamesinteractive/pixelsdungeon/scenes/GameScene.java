@@ -126,6 +126,8 @@ public class GameScene extends PixelScene {
 	@Override
 	public void create() {
 		
+		App.setModuleFileName(Assets.MUSIC1TOWER);
+		
 		try {
 			//AssetFileDescriptor afd = Game.instance.getAssets().openFd(Assets.MUSIC1TOWER);
 			//moduleFile = afd.createInputStream();
@@ -146,14 +148,16 @@ public class GameScene extends PixelScene {
 		}
 		
 		if(moduleData != null){
+			
 			//PlayerThread pt = App.getMusicPlayer();
 			//pt = new PlayerThread(0);
 			//musicPlayer = new PlayerThread(moduleData, 0);
-			App.getMusicPlayer().LoadMODData(moduleData);
-			App.getMusicPlayer().setVolume(255);
-			App.getMusicPlayer().start();
-		
-			App.getMusicPlayer().UnPausePlay();
+			if(App.getMusicPlayer() != null){
+				//App.stopModMusic();
+				App.pauseModMusic();
+				App.setModuleData(moduleData);
+				App.startModMusic();
+			}
 		}else{
 			
 		}
