@@ -30,6 +30,9 @@ Ideas for Challenges to be implemented sto- err I mean borrowed from - Shadow Au
 
 Criticism is appreciated as soon as I get my first commit up. I'll be trying to upload some .apks for you guys with each update.
 
+EDIT: Here's the current apk for you to play with, I'll try my best to keep it updated:
+https://dl.dropboxusercontent.com/u/29071079/PixelDungeonMod/PixelDungeonMod.apk
+
 Original Readme:
 Pixel Dungeon
 =============
