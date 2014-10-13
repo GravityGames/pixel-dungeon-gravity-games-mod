@@ -17,6 +17,12 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.scenes;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import android.R;
+
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.effects.BannerSprites;
 import com.gravitygamesinteractive.pixelsdungeon.effects.Fireball;
@@ -31,19 +37,44 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
 
 public class TitleScene extends PixelScene {
-
-	private static final String TXT_PLAY		= "Play";
-	private static final String TXT_HIGHSCORES	= "Rankings";
-	private static final String TXT_BADGES		= "Badges";
-	private static final String TXT_ABOUT		= "About";
+	
+	private InputStream moduleFile;
+	private byte[] moduleData = new byte[0];
 	
 	@Override
 	public void create() {
 		
 		super.create();
 		
-		Music.INSTANCE.play( Assets.THEME, true );
-		Music.INSTANCE.volume( 1f );
+		App.setModuleFileName(Assets.THEMEPLACEHOLDER);
+		
+		try {
+			moduleFile = Game.instance.getAssets().open(Assets.THEMEPLACEHOLDER);
+			moduleData = new byte[moduleFile.available()];
+			moduleFile.read(moduleData,0, moduleFile.available());
+			
+		} catch (IOException e) {
+			System.exit(0);
+		}
+		
+		if(moduleData != null){
+			
+			//PlayerThread pt = App.getMusicPlayer();
+			//pt = new PlayerThread(0);
+			//musicPlayer = new PlayerThread(moduleData, 0);
+			if(App.getMusicPlayer() != null){
+				//App.stopModMusic();
+				App.pauseModMusic();
+				App.setModuleData(moduleData);
+				App.setVolume(255);
+				App.startModMusic();
+			}
+		}else{
+			
+		}
+		
+		//Music.INSTANCE.play( Assets.THEME, true );
+		//Music.INSTANCE.volume( 1f );
 		
 		uiCamera.visible = false;
 		
@@ -65,7 +96,7 @@ public class TitleScene extends PixelScene {
 		placeTorch( title.x + 18, title.y + 20 );
 		placeTorch( title.x + title.width - 18, title.y + 20 );
 		
-		DashboardItem btnBadges = new DashboardItem( TXT_BADGES, 3 ) {
+		DashboardItem btnBadges = new DashboardItem( App.getContext().getResources().getString(com.gravitygamesinteractive.pixelsdungeon.R.string.TITLE_TEXT_BADGES), 3 ) {
 			@Override
 			protected void onClick() {
 				Game.switchScene( BadgesScene.class );
@@ -74,7 +105,7 @@ public class TitleScene extends PixelScene {
 		btnBadges.setPos( w / 2 - btnBadges.width(), (h + height) / 2 - DashboardItem.SIZE );
 		add( btnBadges );
 		
-		DashboardItem btnAbout = new DashboardItem( TXT_ABOUT, 1 ) {
+		DashboardItem btnAbout = new DashboardItem( App.getContext().getResources().getString(com.gravitygamesinteractive.pixelsdungeon.R.string.TITLE_TEXT_ABOUT), 1 ) {
 			@Override
 			protected void onClick() {
 				Game.switchScene( AboutScene.class );
@@ -83,7 +114,7 @@ public class TitleScene extends PixelScene {
 		btnAbout.setPos( w / 2, (h + height) / 2 - DashboardItem.SIZE );
 		add( btnAbout );
 		
-		DashboardItem btnPlay = new DashboardItem( TXT_PLAY, 0 ) {
+		DashboardItem btnPlay = new DashboardItem( App.getContext().getResources().getString(com.gravitygamesinteractive.pixelsdungeon.R.string.TITLE_TEXT_PLAY), 0 ) {
 			@Override
 			protected void onClick() {
 				Game.switchScene( StartScene.class );
@@ -92,7 +123,7 @@ public class TitleScene extends PixelScene {
 		btnPlay.setPos( w / 2 - btnPlay.width(), btnAbout.top() - DashboardItem.SIZE );
 		add( btnPlay );
 		
-		DashboardItem btnHighscores = new DashboardItem( TXT_HIGHSCORES, 2 ) {
+		DashboardItem btnHighscores = new DashboardItem( App.getContext().getResources().getString(com.gravitygamesinteractive.pixelsdungeon.R.string.TITLE_TEXT_HIGHSCORES), 2 ) {
 			@Override
 			protected void onClick() {
 				Game.switchScene( RankingsScene.class );

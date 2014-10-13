@@ -114,6 +114,7 @@ public class Assets {
 	
 	public static final String THEME	= "theme.mp3";
 	public static final String TUNE		= "game.mp3";
+	public static final String THEMEPLACEHOLDER = "manwe - evening glow.it";
 	public static final String MUSIC1TOWER = "tower1.it";
 	public static final String HAPPY	= "surface.mp3";
 	

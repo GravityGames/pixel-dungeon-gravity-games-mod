@@ -27,6 +27,7 @@ import com.gravitygamesinteractive.pixelsdungeon.items.Gold;
 import com.gravitygamesinteractive.pixelsdungeon.items.Item;
 import com.gravitygamesinteractive.pixelsdungeon.items.armor.Armor;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.Bag;
+import com.gravitygamesinteractive.pixelsdungeon.items.bags.PotionBag;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.ScrollHolder;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.SeedPouch;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.WandHolster;
@@ -114,7 +115,8 @@ public class WndBag extends WndTabbed {
 			stuff.backpack, 
 			stuff.getItem( SeedPouch.class ), 
 			stuff.getItem( ScrollHolder.class ),
-			stuff.getItem( WandHolster.class )};
+			stuff.getItem( WandHolster.class ),
+			stuff.getItem( PotionBag.class )};
 		
 		for (Bag b : bags) {
 			if (b != null) {
@@ -259,6 +261,8 @@ public class WndBag extends WndTabbed {
 				return Icons.get( Icons.SCROLL_HOLDER );
 			} else if (bag instanceof WandHolster) {
 				return Icons.get( Icons.WAND_HOLSTER );
+			}else if (bag instanceof WandHolster) {
+				return Icons.get( Icons.SEED_POUCH );
 			} else {
 				return Icons.get( Icons.BACKPACK );
 			}

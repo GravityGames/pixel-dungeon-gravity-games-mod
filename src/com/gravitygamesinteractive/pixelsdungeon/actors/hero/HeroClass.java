@@ -22,6 +22,7 @@ import com.gravitygamesinteractive.pixelsdungeon.Badges;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.items.TomeOfMastery;
 import com.gravitygamesinteractive.pixelsdungeon.items.armor.ClothArmor;
+import com.gravitygamesinteractive.pixelsdungeon.items.bags.PotionBag;
 import com.gravitygamesinteractive.pixelsdungeon.items.food.Food;
 import com.gravitygamesinteractive.pixelsdungeon.items.potions.PotionOfStrength;
 import com.gravitygamesinteractive.pixelsdungeon.items.rings.RingOfShadows;
@@ -159,6 +160,7 @@ public enum HeroClass {
 		//(hero.belongings.armor = new ClothArmor()).identify();
 		new Dart( 8 ).identify().collect();
 		new Food().identify().collect();
+		new PotionBag().collect();
 		
 		if (Badges.isUnlocked( Badges.Badge.MASTERY_KYLE )) {
 			new TomeOfMastery().collect();

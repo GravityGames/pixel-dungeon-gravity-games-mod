@@ -88,6 +88,7 @@ public class StartScene extends PixelScene {
 	private GameButton btnNewGame;
 	
 	private boolean huntressUnlocked;
+	private boolean blazeUnlocked;
 	private Group unlock;
 	
 	public static HeroClass curClass;
@@ -299,7 +300,7 @@ public class StartScene extends PixelScene {
 		className.measure();
 		className.x = align( frame.center().x - className.width() / 2 );
 		
-		if (cl != HeroClass.WHOMP || huntressUnlocked) {
+		if ((cl != HeroClass.WHOMP && cl != HeroClass.BLAZE) || huntressUnlocked) {
 		
 			unlock.visible = false;
 			

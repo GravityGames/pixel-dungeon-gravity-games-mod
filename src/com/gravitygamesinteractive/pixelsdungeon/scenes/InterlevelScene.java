@@ -19,6 +19,7 @@ package com.gravitygamesinteractive.pixelsdungeon.scenes;
 
 import java.io.FileNotFoundException;
 
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.Statistics;
@@ -223,7 +224,8 @@ public class InterlevelScene extends PixelScene {
 			message.alpha( p );
 
 			if (mode == Mode.CONTINUE || (mode == Mode.DESCEND && Dungeon.depth == 1)) {
-				Music.INSTANCE.volume( p );
+				App.getMusicPlayer().setVolume( p );
+				//Music.INSTANCE.volume( p );
 			}
 			if ((timeLeft -= Game.elapsed) <= 0) {
 				Game.switchScene( GameScene.class );

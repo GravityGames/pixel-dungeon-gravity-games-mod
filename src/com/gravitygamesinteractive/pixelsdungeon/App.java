@@ -77,6 +77,15 @@ public class App extends PixelDungeon{
     	musicPlayer.PausePlay();
     }
     
+    public static void switchModMusic(byte[] modData){
+    	//pattern=musicPlayer.getCurrentPattern();
+    	musicPlayer.PausePlay();
+    	musicPlayer.UnLoadMod();
+    	moduleData = modData;
+    	musicPlayer.LoadMODData(modData);
+    	musicPlayer.UnPausePlay();
+    }
+    
     public static void stopModMusic(){
     	if(musicPlayer != null){
     		//pattern=musicPlayer.getCurrentPattern();
@@ -106,7 +115,10 @@ public class App extends PixelDungeon{
     	//pattern=0;
     	moduleData = modData;
     	musicPlayer.LoadMODData(modData);
-		musicPlayer.setVolume(255);
+    }
+    
+    public static void setVolume(int volume){
+    	musicPlayer.setVolume(volume);
     }
     
     public static void setModuleFileName(String filename){

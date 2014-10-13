@@ -33,6 +33,7 @@ import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Senior;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Shielded;
 import com.gravitygamesinteractive.pixelsdungeon.items.Item;
+import com.gravitygamesinteractive.pixelsdungeon.items.bags.PotionBag;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.ScrollHolder;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.SeedPouch;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.WandHolster;
@@ -70,6 +71,7 @@ public class Badges {
 		BAG_BOUGHT_SEED_POUCH,
 		BAG_BOUGHT_SCROLL_HOLDER,
 		BAG_BOUGHT_WAND_HOLSTER,
+		BAG_BOUGHT_POTION_BAG,
 		ALL_BAGS_BOUGHT( "All bags bought", 23 ),
 		DEATH_FROM_FIRE( "Death from fire", 24 ),
 		DEATH_FROM_POISON( "Death from poison", 25 ),
@@ -491,6 +493,8 @@ public class Badges {
 			badge = Badge.BAG_BOUGHT_SCROLL_HOLDER;
 		} else if (bag instanceof WandHolster) {
 			badge = Badge.BAG_BOUGHT_WAND_HOLSTER;
+		}else if (bag instanceof PotionBag) {
+			badge = Badge.BAG_BOUGHT_POTION_BAG;
 		}
 		
 		if (badge != null) {

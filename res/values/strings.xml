@@ -2,5 +2,9 @@
 <resources>
 
 	<string name="app_name">Pixel\'s Dungeon</string>
+	<string name="TITLE_TEXT_PLAY">Play</string>
+	<string name="TITLE_TEXT_HIGHSCORES">Rankings</string>
+	<string name="TITLE_TEXT_BADGES">Badges</string>
+	<string name="TITLE_TEXT_ABOUT">About</string>
 
 </resources>
