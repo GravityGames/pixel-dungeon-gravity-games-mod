@@ -17,6 +17,7 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.windows;
 
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.actors.hero.Hero;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.npcs.Ghost;
@@ -91,7 +92,32 @@ public class WndSadGhost extends Window {
 		item.detach( Dungeon.hero.belongings.backpack );
 		
 		if (reward.doPickUp( Dungeon.hero )) {
-			GLog.i( Hero.TXT_YOU_NOW_HAVE, reward.name() );
+			switch(Dungeon.hero.heroClass){
+			case KYLE:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[0], reward.name() );
+				break;
+			case IRIS:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[1], reward.name() );
+				break;
+			case CHOMP:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[2], reward.name() );
+				break;
+			case WHOMP:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[3], reward.name() );
+				break;
+			case BLAZE:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[4], reward.name() );
+				break;
+			case ASH:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[5], reward.name() );
+				break;
+			case SHADE:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[6], reward.name() );
+				break;
+			case BYTT:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[7], reward.name() );
+				break;
+			}
 		} else {
 			Dungeon.level.drop( reward, ghost.pos ).sprite.drop();
 		}

@@ -17,6 +17,7 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.actors.hero;
 
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Badges;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
@@ -39,78 +40,20 @@ import com.watabou.utils.Bundle;
 
 public enum HeroClass {
 
-	KYLE( "kyle" ), IRIS( "iris" ), CHOMP( "chomp" ), WHOMP( "whomp" ), BLAZE( "blaze" ), ASH( "ash" ), SHADE( "shade" ), BYTT( "bytt" );
+	KYLE( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[0] ), 
+	IRIS( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[1] ), 
+	CHOMP( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[2] ), 
+	WHOMP( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[3] ), 
+	BLAZE( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[4] ), 
+	ASH( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[5] ), 
+	SHADE( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[6] ), 
+	BYTT( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_NAMES)[7] );
 	
 	private String title;
 	
 	private HeroClass( String title ) {
 		this.title = title;
 	}
-	
-	public static final String[] KYLE_PERKS = {
-		"Kyle starts with 11 points of Strength.",
-		"Kyle starts with a unique hammer. This hammer can be later \"reforged\" to upgrade another melee weapon.",
-		"Kyle is less proficient with ranged weapons.",
-		"Any piece of food restores some health when eaten.",
-		"Potions of Strength are identified from the beginning.",
-	};
-	
-	public static final String[] IRIS_PERKS = {
-		"Mages start with a unique Wand of Magic Missile. This wand can be later \"disenchanted\" to upgrade another wand.",
-		"Mages recharge their wands faster.",
-		"When eaten, any piece of food restores 1 charge for all wands in the inventory.",
-		"Mages can use wands as a melee weapon.",
-		"Scrolls of Identify are identified from the beginning."
-	};
-	
-	public static final String[] CHOMP_PERKS = {
-		"Rogues start with a Ring of Shadows+1.",
-		"Rogues identify a type of a ring on equipping it.",
-		"Rogues are proficient with light armor, dodging better while wearing one.",
-		"Rogues are proficient in detecting hidden doors and traps.",
-		"Rogues can go without food longer.",
-		"Scrolls of Magic Mapping are identified from the beginning."
-	};
-	
-	public static final String[] WHOMP_PERKS = {
-		"Huntresses start with 15 points of Health.",
-		"Huntresses start with a unique upgradeable boomerang.",
-		"Huntresses are proficient with missile weapons and get damage bonus for excessive strength when using them.",
-		"Huntresses gain more health from dewdrops.",
-		"Huntresses sense neighbouring monsters even if they are hidden behind obstacles."
-	};
-	
-	public static final String[] BLAZE_PERKS = {
-		"Huntresses start with 15 points of Health.",
-		"Huntresses start with a unique upgradeable boomerang.",
-		"Huntresses are proficient with missile weapons and get damage bonus for excessive strength when using them.",
-		"Huntresses gain more health from dewdrops.",
-		"Huntresses sense neighbouring monsters even if they are hidden behind obstacles."
-	};
-	
-	public static final String[] ASH_PERKS = {
-		"Huntresses start with 15 points of Health.",
-		"Huntresses start with a unique upgradeable boomerang.",
-		"Huntresses are proficient with missile weapons and get damage bonus for excessive strength when using them.",
-		"Huntresses gain more health from dewdrops.",
-		"Huntresses sense neighbouring monsters even if they are hidden behind obstacles."
-	};
-	
-	public static final String[] SHADE_PERKS = {
-		"Huntresses start with 15 points of Health.",
-		"Huntresses start with a unique upgradeable boomerang.",
-		"Huntresses are proficient with missile weapons and get damage bonus for excessive strength when using them.",
-		"Huntresses gain more health from dewdrops.",
-		"Huntresses sense neighbouring monsters even if they are hidden behind obstacles."
-	};
-	
-	public static final String[] BYTT_PERKS = {
-		"Bytt starts out incredibly broken.",
-		"Bytt has a unique item set: Alien Machines.",
-		"Huntresses are proficient with missile weapons and get damage bonus for excessive strength when using them.",
-		"Huntresses gain more health from dewdrops.",
-		"Huntresses sense neighbouring monsters even if they are hidden behind obstacles."
-	};
 	
 	public void initHero( Hero hero ) {
 		
@@ -327,21 +270,21 @@ public enum HeroClass {
 		
 		switch (this) {
 		case KYLE:
-			return KYLE_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.KYLE_PERKS);
 		case IRIS:
-			return IRIS_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.IRIS_PERKS);
 		case CHOMP:
-			return CHOMP_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.CHOMP_PERKS);
 		case WHOMP:
-			return WHOMP_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.WHOMP_PERKS);
 		case BLAZE:
-			return BLAZE_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.BLAZE_PERKS);
 		case ASH:
-			return ASH_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.ASH_PERKS);
 		case SHADE:
-			return SHADE_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.SHADE_PERKS);
 		case BYTT:
-			return BYTT_PERKS;
+			return App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.BYTT_PERKS);
 		}
 		
 		return null;

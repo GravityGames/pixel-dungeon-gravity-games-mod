@@ -19,6 +19,7 @@ package com.gravitygamesinteractive.pixelsdungeon.items.quest;
 
 import java.util.ArrayList;
 
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Char;
@@ -102,7 +103,32 @@ public class Pickaxe extends Weapon {
 							
 							DarkGold gold = new DarkGold();
 							if (gold.doPickUp( Dungeon.hero )) {
-								GLog.i( Hero.TXT_YOU_NOW_HAVE, gold.name() );
+								switch(Dungeon.hero.heroClass){
+								case KYLE:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[0], gold.name() );
+									break;
+								case IRIS:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[1], gold.name() );
+									break;
+								case CHOMP:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[2], gold.name() );
+									break;
+								case WHOMP:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[3], gold.name() );
+									break;
+								case BLAZE:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[4], gold.name() );
+									break;
+								case ASH:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[5], gold.name() );
+									break;
+								case SHADE:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[6], gold.name() );
+									break;
+								case BYTT:
+									GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[7], gold.name() );
+									break;
+								}
 							} else {
 								Dungeon.level.drop( gold, hero.pos ).sprite.drop();
 							}

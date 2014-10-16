@@ -17,42 +17,36 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.actors.hero;
 
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.watabou.utils.Bundle;
 
 public enum HeroSubClass {
 
 	NONE( null, null ),
 	
-	GLADIATOR( "gladiator", 
-		"A successful attack with a melee weapon allows the _Gladiator_ to start a combo, " +
-		"in which every next successful hit inflicts more damage." ),
+	GLADIATOR( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[0], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[0] ),
 		
-	BERSERKER( "berserker", 
-		"When severely wounded, the _Berserker_ enters a state of wild fury " +
-		"significantly increasing his damage output." ),
+	BERSERKER( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[1], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[1] ),
 	
-	WARLOCK( "warlock", 
-		"After killing an enemy the _Warlock_ consumes its soul. " +
-		"It heals his wounds and satisfies his hunger." ),
+	WARLOCK( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[2], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[2] ),
 
-	BATTLEMAGE( "battlemage", 
-		"When fighting with a wand in his hands, the _Battlemage_ inflicts additional damage depending " +
-		"on the current number of charges. Every successful hit restores 1 charge to this wand." ),
+	BATTLEMAGE( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[3], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[3] ),
 	
-	ASSASSIN( "assassin", 
-		"When performing a surprise attack, the _Assassin_ inflicts additional damage to his target." ),
+	ASSASSIN( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[4], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[4] ),
 
-	FREERUNNER( "freerunner", 
-		"The _Freerunner_ can move almost twice faster, than most of the monsters. When he " +
-		"is running, the Freerunner is much harder to hit. For that he must be unencumbered and not starving." ),
+	FREERUNNER( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[5], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[5] ),
 		
-	SNIPER( "sniper", 
-		"_Snipers_ are able to detect weak points in an enemy's armor, " +
-		"effectively ignoring it when using a missile weapon." ),
+	SNIPER( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[6], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[6] ),
 
-	WARDEN( "warden", 
-		"Having a strong connection with forces of nature gives _Wardens_ an ability to gather dewdrops and " +
-		"seeds from plants. Also trampling a high grass grants them a temporary armor buff." );
+	WARDEN( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_NAMES)[7], 
+			App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.HERO_SUBCLASS_DESC)[7] );
 	
 	private String title;
 	private String desc;

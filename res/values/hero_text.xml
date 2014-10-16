@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="HERO_NAMES">
+		<item >kyle</item>
+		<item >iris</item>
+		<item >chomp</item>
+		<item >whomp</item>
+		<item >blaze</item>
+		<item >ash</item>
+		<item >shade</item>
+		<item >bytt</item>
+	</string-array>
+    <string-array name="KYLE_PERKS">
+        <item >Kyle the Caiman starts with an extra Strength point.</item>
+        <item >He also starts with his \&quot;signature\&quot; red plastic hammer. This somehow can be used later to boost another weapon.</item>
+        <item >Thanks to years (okay, a few days with a guidebook) with weapondry, Kyle can successfully identify melee weapons without testing them!</item>
+        <item >However, due to his reliance on melee combat, Kyle is quite unskilled with ranged weapons.</item>
+    </string-array>
+    <string-array name="IRIS_PERKS">
+        <item >Iris starts with the Wand of Light. The Wand of Light can be used later to upgrade another wand.</item>
+        <item >Magical items will charge faster when held by Iris.</item>
+        <item >Due to her vast magical experience, Iris can identify magical items without testing them!</item>
+        <item >However, Iris can not weild melee weapons.</item>
+        <item >Also, Iris is a pacifist, so no organic mobs spawn while playing as Iris.</item>
+    </string-array>
+    <string-array name="CHOMP_PERKS">
+        <item >Chomp starts out with a Stealth Helmet.</item>
+        <item >Due to his well-roundedness (and some tips from Eggplant), Chomp can identify gear without having to test it!</item>
+        <item >Due to Chomp\'s short distance flight ability, he can dodge better with light armor.</item>
+        <item >However, this works both ways, as the effects of wearing armor that is too heavy is increased.</item>
+    </string-array>
+    <string-array name="WHOMP_PERKS">
+        <item >Whomp starts with a special bow and arrow.</item>
+        <item >He also starts with five extra health points.</item>
+        <item>Whomp is closer to nature, gaining more health from dew drops.</item>
+        <item >Due to his savage nature, Whomp gets a higher bonus for using weaker weapons.</item>
+        <item >He also is highly trained with a bow, dealing extra damage when using one.</item>
+        <item >However, Whomp\'s savage nature keeps him from weilding highly advanced weapons.</item>
+    </string-array>
+    <string-array name="BLAZE_PERKS">
+        <item >Placeholder text.</item>
+    </string-array>
+    <string-array name="ASH_PERKS">
+        <item >Placeholder text.</item>
+    </string-array>
+    <string-array name="SHADE_PERKS">
+        <item >Placeholder text.</item>
+    </string-array>
+    <string-array name="BYTT_PERKS">
+        <item >Bytt starts out incredibly broken.</item>
+        <item >Bytt is the only one who can use Alien Machines.</item>
+    </string-array>
+    <string-array name="TEXT_LEAVE">
+        <item >Try as you might, you realize that this stairway is now endless. &quot;Curses!&quot;, you shout, as you realize that this is the work of the almighty Count Forced Plot Device, destroyer of logic everywhere. With a loud screech, Count Forced Plot Device jumps out of hiding, laughs, and then retreats back into the darkness. Guess you\'re stuck playing the game, oh boo hoo...</item>
+        <item >Don\'t leave now, the monsters would be very much displeased.</item>
+        <item >Some hero you are. Maybe we should make Kyle the mascot of Gravity Games. Or Sproing. That\'ll show ya.</item>
+        <item >Your tribe would kill you if you backed out now. Trust me, staying here is the safer option.</item>
+        <item >A true warrior does not rush out of the arena like a coward.</item>
+        <item >The door\'s locked tight in the tower tonight, not a back door to be seen. A kindom of doom and terror, and it looks like...dangit, I have Disney on the brain again, quick, think of something else...um...tax exemption...yeah, thats good!...</item>
+        <item >Despite the fact that you have a bazooka that shoots running chainsaws, can pause time at will, possess infinite power, and on more than one occasion simply walked into Mordor, the stairs won\'t let you leave.</item>
+        <item >Some things can not be cheated. Even when that\'s the whole point of your character.</item>
+    </string-array>
+    <string-array name="TEXT_LEVEL_UP">
+        <item >Nice job, mate! Kyle leveled up!</item>
+        <item >Yes! Iris leveled up!</item>
+        <item >Alright! Chomp leveled up!</item>
+        <item >Good job! Whomp level up!</item>
+        <item >Awesome! Blaze leveled up!</item>
+        <item >Good enough. Ash leveled up!</item>
+        <item >Death to all who oppose you! Shade level up!</item>
+        <item >For science! For money! Bytt leveled up!</item>
+    </string-array>
+    <string name="TEXT_NEW_LEVEL">You are now level %d! Your HP has increased and it\'s now easier for you to hit and dodge enemies.</string>
+    <string-array name="TEXT_YOU_NOW_HAVE">
+        <item>Eh, I\m sure no one will miss this %s...</item>
+        <item>This %s might come in handy!</item>
+        <item>Hey! A %s!</item>
+        <item>Ooh, %s.</item>
+        <item>Hey look! A %s!</item>
+        <item>I might need this %s.</item>
+        <item>Sweet! A %s!</item>
+        <item>Well, well. What a nice %s!</item>
+    </string-array>
+    <string-array name="TEXT_SOMETHING_ELSE">
+        <item >Well, what do we have here?</item>
+        <item >Wow, there\'s more here!</item>
+        <item >Look! There\'s something else here!</item>
+        <item >Ooh, shiny.</item>
+        <item >Hey! It\'s another item!</item>
+        <item >There\'s something else here.</item>
+        <item >Hey, there\'s something else here!</item>
+        <item >Hey! What\'s this!</item>
+    </string-array>
+    <string-array name="TEXT_LOCKED_CHEST">
+        <item >This chest is locked. Well, guess I\'d better start looking for the key.</item>
+        <item >Aww. The chest is locked. I need to find the key.</item>
+        <item >This chest seems to be locked. Maybe there\'s a key somewhere...</item>
+        <item >Chest locked. Need key.</item>
+        <item >This chest is locked, and I don\'t think I have the key.</item>
+        <item >The chest is locked. If I want to open it, I\'ll need to find it\'s key.</item>
+        <item >This chest is locked! Where\'s that stupid key.</item>
+        <item >Ack! This chest is locked! I need the blasted key.</item>
+    </string-array>
+    <string-array name="TEXT_LOCKED_DOOR">
+        <item >This door is locked. Well, guess I\'d better start looking for the key.</item>
+        <item >Aww. The door is locked. I need to find the key.</item>
+        <item >This door seems to be locked. Maybe there\'s a key somewhere...</item>
+        <item >Door locked. Need key.</item>
+        <item >This door is locked, and I don\'t think I have the key.</item>
+        <item >The door is locked. If I want to open it, I\'ll need to find it\'s key.</item>
+        <item >This door is locked! Where\'s that stupid key.</item>
+        <item >Ack! This door is locked! I need the blasted key.</item>
+    </string-array>
+    <string-array name="TEXT_NOTICED_SOMETHING">
+        <item >Well, look what we have here!</item>
+        <item >Huh, that\'s odd.</item>
+        <item >What\'s this?</item>
+        <item >WHA?</item>
+        <item >That\'s strange.</item>
+        <item >I think I saw something.</item>
+        <item >What is this?</item>
+        <item >How intriguing.</item>
+    </string-array>
+    <string name="TEXT_WAIT">...</string>
+    <string name="TEXT_SEARCH">search</string>
+    <string-array name="HERO_SUBCLASS_NAMES">
+        <item >gladiator</item>
+        <item >berserker</item>
+        <item >warlock</item>
+        <item >battlemage</item>
+        <item >assassin</item>
+        <item >freerunner</item>
+        <item >sniper</item>
+        <item >warden</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+    </string-array>
+    <string-array name="HERO_SUBCLASS_DESC">
+        <item >A successful attack with a melee weapon allows the _Gladiator_ to start a combo, in which every next successful hit inflicts more damage.</item>
+        <item >When severely wounded, the _Berserker_ enters a state of wild fury, significantly increasing his damage output.</item>
+        <item >After killing an enemy the _Warlock_ consumes its soul. This heals his wounds and satisfies his hunger.</item>
+        <item >When fighting with a wand in his hands, the _Battlemage_ inflicts additional damage depending on the current number of charges. Every successful hit restores 1 charge to this wand.</item>
+        <item >When performing a surprise attack, the _Assassin_ inflicts additional damage to his target.</item>
+        <item >The _Freerunner_ can move almost twice as fast, faster than most of the monsters. When he is running, the Freerunner is much harder to hit, though he must be unencumbered and not starving."</item>
+        <item >_Snipers_ are able to detect weak points in an enemy\'s armor, effectively ignoring it when using a missile weapon.</item>
+        <item >Having a strong connection with forces of nature gives _Wardens_ an ability to gather dewdrops and seeds from plants. Also trampling a high grass grants them a temporary armor buff.</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+        <item >gladiator</item>
+    </string-array>
+</resources>

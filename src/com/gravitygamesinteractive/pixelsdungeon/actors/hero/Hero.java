@@ -20,6 +20,7 @@ package com.gravitygamesinteractive.pixelsdungeon.actors.hero;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Badges;
 import com.gravitygamesinteractive.pixelsdungeon.Bones;
@@ -102,23 +103,6 @@ import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
 public class Hero extends Char {
-	
-	private static final String TXT_LEAVE = "One does not simply leave Pixel Dungeon.";
-	
-	private static final String TXT_LEVEL_UP = "level up!";
-	private static final String TXT_NEW_LEVEL = 
-		"Welcome to level %d! Now you are healthier and more focused. " +
-		"It's easier for you to hit enemies and dodge their attacks.";
-	
-	public static final String TXT_YOU_NOW_HAVE	= "You now have %s";
-	
-	private static final String TXT_SOMETHING_ELSE	= "There is something else here";
-	private static final String TXT_LOCKED_CHEST	= "This chest is locked and you don't have matching key";
-	private static final String TXT_LOCKED_DOOR		= "You don't have a matching key";
-	private static final String TXT_NOTICED_SMTH	= "You noticed something";
-	
-	private static final String TXT_WAIT	= "...";
-	private static final String TXT_SEARCH	= "search";
 	
 	public static final int STARTING_STR = 10;
 	
@@ -559,14 +543,89 @@ public class Hero extends Char {
 						
 						if ((item instanceof ScrollOfUpgrade && ((ScrollOfUpgrade)item).isKnown()) ||
 							(item instanceof PotionOfStrength && ((PotionOfStrength)item).isKnown())) {
-							GLog.p( TXT_YOU_NOW_HAVE, item.name() );
+							switch(Dungeon.hero.heroClass){
+							case KYLE:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[0], item.name() );
+								break;
+							case IRIS:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[1], item.name() );
+								break;
+							case CHOMP:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[2], item.name() );
+								break;
+							case WHOMP:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[3], item.name() );
+								break;
+							case BLAZE:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[4], item.name() );
+								break;
+							case ASH:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[5], item.name() );
+								break;
+							case SHADE:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[6], item.name() );
+								break;
+							case BYTT:
+								GLog.p( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[7], item.name() );
+								break;
+							}
 						} else {
-							GLog.i( TXT_YOU_NOW_HAVE, item.name() );
+							switch(Dungeon.hero.heroClass){
+							case KYLE:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[0], item.name() );
+								break;
+							case IRIS:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[1], item.name() );
+								break;
+							case CHOMP:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[2], item.name() );
+								break;
+							case WHOMP:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[3], item.name() );
+								break;
+							case BLAZE:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[4], item.name() );
+								break;
+							case ASH:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[5], item.name() );
+								break;
+							case SHADE:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[6], item.name() );
+								break;
+							case BYTT:
+								GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[7], item.name() );
+								break;
+							}
 						}
 					}
 					
 					if (!heap.isEmpty()) {
-						GLog.i( TXT_SOMETHING_ELSE );
+						switch(Dungeon.hero.heroClass){
+					case KYLE:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[0], item.name() );
+						break;
+					case IRIS:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[1], item.name() );
+						break;
+					case CHOMP:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[2], item.name() );
+						break;
+					case WHOMP:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[3], item.name() );
+						break;
+					case BLAZE:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[4], item.name() );
+						break;
+					case ASH:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[5], item.name() );
+						break;
+					case SHADE:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[6], item.name() );
+						break;
+					case BYTT:
+						GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_SOMETHING_ELSE)[7], item.name() );
+						break;
+						}
 					}
 					curAction = null;
 				} else {
@@ -600,7 +659,32 @@ public class Hero extends Char {
 					theKey = belongings.getKey( GoldenKey.class, Dungeon.depth );
 					
 					if (theKey == null) {
-						GLog.w( TXT_LOCKED_CHEST );
+						switch(Dungeon.hero.heroClass){
+						case KYLE:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[0]);
+							break;
+						case IRIS:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[1]);
+							break;
+						case CHOMP:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[2]);
+							break;
+						case WHOMP:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[3]);
+							break;
+						case BLAZE:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[4]);
+							break;
+						case ASH:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[5]);
+							break;
+						case SHADE:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[6]);
+							break;
+						case BYTT:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_CHEST)[7]);
+							break;
+							}
 						ready();
 						return;
 					}
@@ -656,7 +740,32 @@ public class Hero extends Char {
 				Sample.INSTANCE.play( Assets.SND_UNLOCK );
 				
 			} else {
-				GLog.w( TXT_LOCKED_DOOR );
+				switch(Dungeon.hero.heroClass){
+				case KYLE:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[0]);
+					break;
+				case IRIS:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[1]);
+					break;
+				case CHOMP:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[2]);
+					break;
+				case WHOMP:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[3]);
+					break;
+				case BLAZE:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[4]);
+					break;
+				case ASH:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[5]);
+					break;
+				case SHADE:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[6]);
+					break;
+				case BYTT:
+					GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LOCKED_DOOR)[7]);
+					break;
+					}
 				ready();
 			}
 			
@@ -695,7 +804,32 @@ public class Hero extends Char {
 			if (Dungeon.depth == 1) {
 				
 				if (belongings.getItem( Amulet.class ) == null) {
-					GameScene.show( new WndMessage( TXT_LEAVE ) );
+					switch(Dungeon.hero.heroClass){
+					case KYLE:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[0] ) );
+						break;
+					case IRIS:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[1] ) );
+						break;
+					case CHOMP:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[2] ) );
+						break;
+					case WHOMP:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[3] ) );
+						break;
+					case BLAZE:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[4] ) );
+						break;
+					case ASH:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[5] ) );
+						break;
+					case SHADE:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[6] ) );
+						break;
+					case BYTT:
+						GameScene.show( new WndMessage( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEAVE)[7] ) );
+						break;
+					}
 					ready();
 				} else {
 					Dungeon.deleteGame( Dungeon.hero.heroClass, true );
@@ -745,7 +879,7 @@ public class Hero extends Char {
 	public void rest( boolean tillHealthy ) {
 		spendAndNext( TIME_TO_REST );
 		if (!tillHealthy) {
-			sprite.showStatus( CharSprite.DEFAULT, TXT_WAIT );
+			sprite.showStatus( CharSprite.DEFAULT, App.getContext().getResources().getString(com.gravitygamesinteractive.pixelsdungeon.R.string.TEXT_WAIT) );
 		}
 		restoreHealth = tillHealthy;
 	}
@@ -986,8 +1120,33 @@ public class Hero extends Char {
 		
 		if (levelUp) {
 			
-			GLog.p( TXT_NEW_LEVEL, lvl );
-			sprite.showStatus( CharSprite.POSITIVE, TXT_LEVEL_UP );
+			GLog.p( App.getContext().getResources().getString(com.gravitygamesinteractive.pixelsdungeon.R.string.TEXT_NEW_LEVEL), lvl );
+			switch(Dungeon.hero.heroClass){
+			case KYLE:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[0] );
+				break;
+			case IRIS:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[1] );
+				break;
+			case CHOMP:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[2] );
+				break;
+			case WHOMP:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[3] );
+				break;
+			case BLAZE:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[4] );
+				break;
+			case ASH:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[5] );
+				break;
+			case SHADE:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[6] );
+				break;
+			case BYTT:
+				sprite.showStatus( CharSprite.POSITIVE, App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_LEVEL_UP)[7] );
+				break;
+			}
 			Sample.INSTANCE.play( Assets.SND_LEVELUP );
 			
 			Badges.validateLevelReached();
@@ -1286,7 +1445,7 @@ public class Hero extends Char {
 
 		
 		if (intentional) {
-			sprite.showStatus( CharSprite.DEFAULT, TXT_SEARCH );
+			sprite.showStatus( CharSprite.DEFAULT, App.getContext().getResources().getString(com.gravitygamesinteractive.pixelsdungeon.R.string.TEXT_SEARCH) );
 			sprite.operate( pos );
 			if (smthFound) {
 				spendAndNext( Random.Float() < level ? TIME_TO_SEARCH : TIME_TO_SEARCH * 2 );
@@ -1297,7 +1456,32 @@ public class Hero extends Char {
 		}
 		
 		if (smthFound) {
-			GLog.w( TXT_NOTICED_SMTH );
+			switch(Dungeon.hero.heroClass){
+			case KYLE:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[0]);
+				break;
+			case IRIS:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[1]);
+				break;
+			case CHOMP:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[2]);
+				break;
+			case WHOMP:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[3]);
+				break;
+			case BLAZE:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[4]);
+				break;
+			case ASH:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[5]);
+				break;
+			case SHADE:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[6]);
+				break;
+			case BYTT:
+				GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_NOTICED_SOMETHING)[7]);
+				break;
+				}
 			Sample.INSTANCE.play( Assets.SND_SECRET );
 			interrupt();
 		}

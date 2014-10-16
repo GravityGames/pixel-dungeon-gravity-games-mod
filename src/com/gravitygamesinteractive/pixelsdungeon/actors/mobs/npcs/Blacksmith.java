@@ -19,6 +19,7 @@ package com.gravitygamesinteractive.pixelsdungeon.actors.mobs.npcs;
 
 import java.util.Collection;
 
+import com.gravitygamesinteractive.pixelsdungeon.App;
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Badges;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
@@ -98,7 +99,32 @@ public class Blacksmith extends Mob.NPC {
 					
 					Pickaxe pick = new Pickaxe();
 					if (pick.doPickUp( Dungeon.hero )) {
-						GLog.i( Hero.TXT_YOU_NOW_HAVE, pick.name() );
+						switch(Dungeon.hero.heroClass){
+						case KYLE:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[0], pick.name() );
+							break;
+						case IRIS:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[1], pick.name() );
+							break;
+						case CHOMP:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[2], pick.name() );
+							break;
+						case WHOMP:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[3], pick.name() );
+							break;
+						case BLAZE:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[4], pick.name() );
+							break;
+						case ASH:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[5], pick.name() );
+							break;
+						case SHADE:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[6], pick.name() );
+							break;
+						case BYTT:
+							GLog.i( App.getContext().getResources().getStringArray(com.gravitygamesinteractive.pixelsdungeon.R.array.TEXT_YOU_NOW_HAVE)[7], pick.name() );
+							break;
+						}
 					} else {
 						Dungeon.level.drop( pick, Dungeon.hero.pos ).sprite.drop();
 					}
