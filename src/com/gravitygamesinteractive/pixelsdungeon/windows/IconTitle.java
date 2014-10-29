@@ -17,11 +17,14 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.windows;
 
+import com.gravitygamesinteractive.pixelsdungeon.items.Item;
 import com.gravitygamesinteractive.pixelsdungeon.scenes.PixelScene;
 import com.gravitygamesinteractive.pixelsdungeon.ui.Window;
+import com.gravitygamesinteractive.pixelsdungeon.utils.Utils;
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.ui.Component;
+import com.gravitygamesinteractive.pixelsdungeon.sprites.ItemSprite;
 
 public class IconTitle extends Component {
 
@@ -34,6 +37,12 @@ public class IconTitle extends Component {
 	
 	public IconTitle() {
 		super();
+	}
+	
+	public IconTitle( Item item ) {
+		this( 
+			new ItemSprite( item.image(), item.glowing() ), 
+			Utils.capitalize( item.toString() ) );
 	}
 	
 	public IconTitle( Image icon, String label ) {

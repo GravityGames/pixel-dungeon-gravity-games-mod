@@ -33,10 +33,12 @@ import com.gravitygamesinteractive.pixelsdungeon.levels.Level;
 import com.gravitygamesinteractive.pixelsdungeon.mechanics.Ballistica;
 import com.gravitygamesinteractive.pixelsdungeon.scenes.CellSelector;
 import com.gravitygamesinteractive.pixelsdungeon.scenes.GameScene;
+import com.gravitygamesinteractive.pixelsdungeon.sprites.HeroSprite;
 import com.gravitygamesinteractive.pixelsdungeon.sprites.ItemSpriteSheet;
 import com.gravitygamesinteractive.pixelsdungeon.utils.GLog;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.tweeners.PosTweener;
+import com.watabou.utils.Callback;
 import com.watabou.utils.PointF;
 
 public class KyleArmor extends ClassArmor {
@@ -91,24 +93,35 @@ public class KyleArmor extends ClassArmor {
 					cell = Ballistica.trace[Ballistica.distance - 2];
 				}
 				
-				curUser.HP /= 2;
+				curUser.HP -= (curUser.HP / 3);
 				if (curUser.subClass == HeroSubClass.BERSERKER && curUser.HP <= curUser.HT * Fury.LEVEL) {
 					Buff.affect( curUser, Fury.class );
 				}
 				
 				Invisibility.dispel();
 				
-				curUser.move( cell );
-				curUser.sprite.place( cell );
-				Dungeon.level.press( target, curUser );
+				final int dest = cell;
+				curUser.busy();
+				((HeroSprite)curUser.sprite).jump( curUser.pos, cell, new Callback() {
+				@Override
+				public void call() {
+				curUser.move( dest );
+				Dungeon.level.press( dest, curUser );
 				Dungeon.observe();
 				
 				for (int i=0; i < Level.NEIGHBOURS8.length; i++) {
-					Char mob = Actor.findChar( curUser.pos + Level.NEIGHBOURS8[i] );
-					if (mob != null && mob != curUser) {
-						Buff.prolong( mob, Paralysis.class, SHOCK_TIME );
-					}
+				Char mob = Actor.findChar( curUser.pos + Level.NEIGHBOURS8[i] );
+				if (mob != null && mob != curUser) {
+				Buff.prolong( mob, Paralysis.class, SHOCK_TIME );
 				}
+				}
+				
+				CellEmitter.center( dest ).burst( Speck.factory( Speck.DUST ), 10 );
+				Camera.main.shake( 2, 0.5f );
+				
+				curUser.spendAndNext( LEAP_TIME );
+					}
+				});
 				
 				PointF pos = curUser.sprite.point();
 				Camera.main.target = null;

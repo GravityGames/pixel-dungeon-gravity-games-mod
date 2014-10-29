@@ -30,6 +30,7 @@ import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.TouchArea;
+import com.gravitygamesinteractive.pixelsdungeon.ui.ExitButton;
 
 public class AboutScene extends PixelScene {
 
@@ -82,6 +83,10 @@ public class AboutScene extends PixelScene {
 		Archs archs = new Archs();
 		archs.setSize( Camera.main.width, Camera.main.height );
 		addToBack( archs );
+		
+		ExitButton btnExit = new ExitButton();
+		btnExit.setPos( Camera.main.width - btnExit.width(), 0 );
+		add( btnExit );
 		
 		fadeIn();
 	}

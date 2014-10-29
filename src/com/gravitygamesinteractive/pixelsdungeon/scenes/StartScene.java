@@ -71,6 +71,9 @@ public class StartScene extends PixelScene {
 	
 	private static final String TXT_UNLOCK	= "To unlock this character class, slay the 3rd boss with any other class";
 	
+	private static final String TXT_WIN_THE_GAME = 
+			"To unlock \"Challenges\", win the game with any character class.";
+	
 	private float width;
 	private float height;
 	private float top;
@@ -259,6 +262,12 @@ public class StartScene extends PixelScene {
 		
 		unlock = new Group();
 		add( unlock );
+		
+		/*ChallengeButton challenge = new ChallengeButton();
+		challenge.setPos( 
+			w / 2 - challenge.width() / 2,
+			top + shieldH - challenge.height() / 2 );
+		add( challenge );*/
 		
 		if (!(huntressUnlocked = Badges.isUnlocked( Badges.Badge.BOSS_SLAIN_3 ))) {
 		

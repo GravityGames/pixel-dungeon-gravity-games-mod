@@ -19,6 +19,7 @@ package com.gravitygamesinteractive.pixelsdungeon.scenes;
 
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
+import com.gravitygamesinteractive.pixelsdungeon.ResultDescriptions;
 import com.gravitygamesinteractive.pixelsdungeon.effects.Flare;
 import com.gravitygamesinteractive.pixelsdungeon.effects.Speck;
 import com.gravitygamesinteractive.pixelsdungeon.ui.RedButton;
@@ -66,6 +67,7 @@ public class AmuletScene extends PixelScene {
 		RedButton btnExit = new RedButton( TXT_EXIT ) {
 			@Override
 			protected void onClick() {
+				Dungeon.win( ResultDescriptions.WIN );
 				Dungeon.deleteGame( Dungeon.hero.heroClass, true );
 				Game.switchScene( noText ? TitleScene.class : RankingsScene.class );
 			}

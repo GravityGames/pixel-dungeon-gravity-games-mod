@@ -30,6 +30,7 @@ import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Buff;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Paralysis;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Roots;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
+import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.npcs.NPC;
 import com.gravitygamesinteractive.pixelsdungeon.effects.CellEmitter;
 import com.gravitygamesinteractive.pixelsdungeon.effects.Speck;
 import com.gravitygamesinteractive.pixelsdungeon.items.Generator;
@@ -51,7 +52,7 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
-public class MotivationalSpeakerMan extends Mob.NPC {
+public class MotivationalSpeakerMan extends NPC {
 
 	{
 		name = "Motivational Speaker Man";
@@ -59,7 +60,7 @@ public class MotivationalSpeakerMan extends Mob.NPC {
 		
 		flying = true;
 		
-		state = State.WANDERING;
+		state = WANDERING;
 	}
 	
 	private static final String TXT_FIRE1	=
@@ -307,7 +308,6 @@ public class MotivationalSpeakerMan extends Mob.NPC {
 				if (alternative) {
 					
 					FetidRat rat = new FetidRat();
-					rat.state = Mob.State.WANDERING;
 					rat.pos = Dungeon.level.randomRespawnCell();
 					if (rat.pos != -1) {
 						GameScene.add( rat );
@@ -340,6 +340,8 @@ public class MotivationalSpeakerMan extends Mob.NPC {
 		{
 			name = "fetid rat";
 			spriteClass = FetidRatSprite.class;
+			
+			state = WANDERING;
 			
 			HP = HT = 15;
 			defenseSkill = 5;

@@ -27,7 +27,7 @@ public class IronKey extends Key {
 
 	private static final String TXT_FROM_DEPTH = "iron key from depth %d";
 
-	public static int curDepthQunatity = 0;
+	public static int curDepthQuantity = 0;
 	
 	{
 		name = "iron key";
@@ -53,12 +53,10 @@ public class IronKey extends Key {
 	}
 	
 	@Override
-	public Item detach( Bag  bag ) {
-		Item result = super.detach( bag );
-		if (result != null && depth == Dungeon.depth) {
+	public void onDetach( ) {
+		if (depth == Dungeon.depth) {
 			Dungeon.hero.belongings.countIronKeys();
 		}
-		return result;
 	}
 	
 	@Override

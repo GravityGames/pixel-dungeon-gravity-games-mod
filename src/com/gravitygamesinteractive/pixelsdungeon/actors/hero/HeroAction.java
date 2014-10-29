@@ -19,6 +19,7 @@ package com.gravitygamesinteractive.pixelsdungeon.actors.hero;
 
 import com.gravitygamesinteractive.pixelsdungeon.actors.Char;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
+import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.npcs.NPC;
 
 
 public class HeroAction {
@@ -50,8 +51,8 @@ public class HeroAction {
 	}
 	
 	public static class Interact extends HeroAction {
-		public Mob.NPC npc;
-		public Interact( Mob.NPC npc ) {
+		public NPC npc;
+		public Interact( NPC npc ) {
 			this.npc = npc;
 		}
 	}

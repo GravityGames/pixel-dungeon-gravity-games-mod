@@ -17,6 +17,7 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.items.keys;
 
+import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.items.Item;
 import com.gravitygamesinteractive.pixelsdungeon.items.bags.Bag;
 import com.watabou.utils.Bundle;
@@ -31,16 +32,9 @@ public class Key extends Item {
 	
 	public int depth;
 	
-	@Override
-	public boolean isSimilar( Item item ) {
-		return item.getClass() == getClass() && ((Key)item).depth == depth;
-	}
-	
-	@Override
-	public Item detach( Bag container ) {
-		Key key = (Key)super.detach( container );
-		key.depth = depth;
-		return key;
+	public Key() {
+		super();
+		depth = Dungeon.depth;
 	}
 	
 	private static final String DEPTH = "depth";
@@ -65,5 +59,10 @@ public class Key extends Item {
 	@Override
 	public boolean isIdentified() {
 		return true;
+	}
+	
+	@Override
+	public String status() {
+	return depth + "*";
 	}
 }

@@ -25,6 +25,7 @@ import com.gravitygamesinteractive.pixelsdungeon.plants.Plant;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.TextureFilm;
+import com.watabou.utils.PointF;
 
 public class PlantSprite extends Image {
 
@@ -65,8 +66,9 @@ public class PlantSprite extends Image {
 		alpha( 1f );
 		
 		pos = plant.pos;
-		x = pos % Level.WIDTH * DungeonTilemap.SIZE;
-		y = pos / Level.WIDTH * DungeonTilemap.SIZE;
+		PointF p = DungeonTilemap.tileToWorld( plant.pos );
+		x = p.x;
+		y = p.y;
 		
 		state = State.GROWING;
 		time = DELAY;

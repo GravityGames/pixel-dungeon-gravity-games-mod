@@ -21,7 +21,7 @@ import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Actor;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Char;
-import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
+import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.npcs.NPC;
 import com.gravitygamesinteractive.pixelsdungeon.effects.CellEmitter;
 import com.gravitygamesinteractive.pixelsdungeon.effects.MagicMissile;
 import com.gravitygamesinteractive.pixelsdungeon.effects.Speck;
@@ -104,7 +104,7 @@ public class WandOfFlock extends Wand {
 			"A flick of this wand summons a flock of magic sheep, creating temporary impenetrable obstacle.";
 	}
 	
-	public static class Sheep extends Mob.NPC {
+	public static class Sheep extends NPC {
 		
 		private static final String[] QUOTES = {"Baa!", "Baa?", "Baa.", "Baa..."};
 		

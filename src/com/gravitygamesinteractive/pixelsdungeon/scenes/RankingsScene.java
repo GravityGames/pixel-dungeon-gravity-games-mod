@@ -35,6 +35,7 @@ import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.ui.Button;
+import com.gravitygamesinteractive.pixelsdungeon.ui.ExitButton;
 
 public class RankingsScene extends PixelScene {
 	
@@ -109,6 +110,10 @@ public class RankingsScene extends PixelScene {
 			add( title );
 			
 		}
+		
+		ExitButton btnExit = new ExitButton();
+		btnExit.setPos( Camera.main.width - btnExit.width(), 0 );
+		add( btnExit );
 		
 		fadeIn();
 	}

@@ -17,9 +17,11 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.items.weapon.enchantments;
 
+import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Char;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Buff;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Terror;
+import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Vertigo;
 import com.gravitygamesinteractive.pixelsdungeon.items.weapon.Weapon;
 import com.gravitygamesinteractive.pixelsdungeon.sprites.ItemSprite;
 import com.gravitygamesinteractive.pixelsdungeon.sprites.ItemSprite.Glowing;
@@ -40,9 +42,11 @@ public class Horror extends Weapon.Enchantment {
 		
 		if (Random.Int( level + 5 ) >= 4) {
 			
-			Terror terror = Buff.affect( defender, Terror.class, Terror.DURATION );
-			terror.source = attacker;
-			
+			if (defender == Dungeon.hero) {
+				Buff.affect( defender, Vertigo.class, Vertigo.duration( defender ) );
+				} else {
+				Buff.affect( defender, Terror.class, Terror.DURATION ).source = attacker;
+				}			
 			return true;
 		} else {
 			return false;

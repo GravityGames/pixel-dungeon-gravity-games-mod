@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
+import com.gravitygamesinteractive.pixelsdungeon.Challenges;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.Statistics;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Actor;
@@ -43,9 +44,12 @@ import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
 import com.gravitygamesinteractive.pixelsdungeon.effects.particles.FlowParticle;
 import com.gravitygamesinteractive.pixelsdungeon.effects.particles.WindParticle;
 import com.gravitygamesinteractive.pixelsdungeon.items.Generator;
+import com.gravitygamesinteractive.pixelsdungeon.items.Gold;
 import com.gravitygamesinteractive.pixelsdungeon.items.Heap;
 import com.gravitygamesinteractive.pixelsdungeon.items.Item;
 import com.gravitygamesinteractive.pixelsdungeon.items.Stylus;
+import com.gravitygamesinteractive.pixelsdungeon.items.food.Food;
+import com.gravitygamesinteractive.pixelsdungeon.items.potions.PotionOfHealing;
 import com.gravitygamesinteractive.pixelsdungeon.items.potions.PotionOfStrength;
 import com.gravitygamesinteractive.pixelsdungeon.items.scrolls.ScrollOfUpgrade;
 import com.gravitygamesinteractive.pixelsdungeon.levels.features.Chasm;
@@ -59,6 +63,7 @@ import com.gravitygamesinteractive.pixelsdungeon.scenes.GameScene;
 import com.gravitygamesinteractive.pixelsdungeon.utils.GLog;
 import com.watabou.noosa.Scene;
 import com.watabou.noosa.audio.Sample;
+import com.gravitygamesinteractive.pixelsdungeon.items.armor.Armor;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
@@ -94,7 +99,8 @@ public abstract class Level implements Bundlable {
 	public boolean[] visited;
 	public boolean[] mapped;
 	
-	public int viewDistance = 8;
+	//public int viewDistance = 8;
+	public int viewDistance = Dungeon.isChallenged( Challenges.DARKNESS ) ? 3: 8;
 	
 	public static boolean[] fieldOfView = new boolean[LENGTH];
 	
@@ -359,7 +365,7 @@ public abstract class Level implements Bundlable {
 				if (mobs.size() < nMobs()) {
 
 					Mob mob = Bestiary.mutable( Dungeon.depth );
-					mob.state = Mob.State.WANDERING;
+					mob.state = mob.WANDERING;
 					mob.pos = randomRespawnCell();
 					if (Dungeon.hero.isAlive() && mob.pos != -1) {
 						GameScene.add( mob );
@@ -503,6 +509,16 @@ public abstract class Level implements Bundlable {
 	}
 	
 	public Heap drop( Item item, int cell ) {
+		
+		if (Dungeon.isChallenged( Challenges.NO_FOOD ) && item instanceof Food) {
+			item = new Gold( item.price() );
+		} else
+		if (Dungeon.isChallenged( Challenges.NO_ARMOR ) && item instanceof Armor) {
+			item = new Gold( item.price() );
+		} else
+		if (Dungeon.isChallenged( Challenges.NO_HEALING ) && item instanceof PotionOfHealing) {
+			item = new Gold( item.price() );
+		}
 		
 		if ((map[cell] == Terrain.ALCHEMY) && !(item instanceof Plant.Seed)) {
 			int n;
@@ -799,7 +815,6 @@ public abstract class Level implements Bundlable {
 				}
 			}
 			if (c.buff( Awareness.class ) != null) {
-
 				for (Heap heap : heaps.values()) {
 					int p = heap.pos;
 					fieldOfView[p] = true;

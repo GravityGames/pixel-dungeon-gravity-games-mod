@@ -208,6 +208,8 @@ public class BadgeBanner extends Image {
 			break;
 		case 38:
 			p.offset( 5, 5 );
+		case 39:
+			p.offset( 5, 4 );
 			break;
 		case 40:
 		case 41:

@@ -35,6 +35,7 @@ import com.watabou.noosa.Image;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
+import com.gravitygamesinteractive.pixelsdungeon.ui.ExitButton;
 
 public class TitleScene extends PixelScene {
 	
@@ -140,8 +141,12 @@ public class TitleScene extends PixelScene {
 		add( version );
 		
 		PrefsButton btnPrefs = new PrefsButton();
-		btnPrefs.setPos( w - btnPrefs.width() - 1, 1 );
+		btnPrefs.setPos( 0, 0 );
 		add( btnPrefs );
+		
+		ExitButton btnExit = new ExitButton();
+		btnExit.setPos( w - btnExit.width(), 0 );
+		add( btnExit );
 		
 		fadeIn();
 	}

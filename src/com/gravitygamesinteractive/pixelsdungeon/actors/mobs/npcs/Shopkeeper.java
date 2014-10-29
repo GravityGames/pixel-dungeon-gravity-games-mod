@@ -29,7 +29,7 @@ import com.gravitygamesinteractive.pixelsdungeon.sprites.ShopkeeperSprite;
 import com.gravitygamesinteractive.pixelsdungeon.windows.WndBag;
 import com.gravitygamesinteractive.pixelsdungeon.windows.WndTradeItem;
 
-public class Shopkeeper extends Mob.NPC {
+public class Shopkeeper extends NPC {
 
 	{
 		name = "shopkeeper";

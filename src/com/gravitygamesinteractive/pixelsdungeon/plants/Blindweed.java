@@ -22,7 +22,6 @@ import com.gravitygamesinteractive.pixelsdungeon.actors.Char;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Blindness;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Buff;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
-import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob.State;
 import com.gravitygamesinteractive.pixelsdungeon.effects.CellEmitter;
 import com.gravitygamesinteractive.pixelsdungeon.effects.Speck;
 import com.gravitygamesinteractive.pixelsdungeon.items.potions.PotionOfInvisibility;
@@ -46,7 +45,7 @@ public class Blindweed extends Plant {
 		if (ch != null) {
 			Buff.prolong( ch, Blindness.class, Random.Int( 5, 10 ) );
 			if (ch instanceof Mob) {
-				((Mob)ch).state = State.WANDERING;
+				((Mob)ch).state = ((Mob)ch).WANDERING;
 				((Mob)ch).beckon( Dungeon.level.randomDestination() );
 			}
 		}

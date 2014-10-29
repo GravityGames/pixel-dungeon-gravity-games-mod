@@ -50,13 +50,12 @@ public class WandHolster extends Bag {
 	}
 	
 	@Override
-	public Item detach( Bag container ) {
+	public void onDetach( ) {
 		
 		for (Item item : items) {
 			((Wand)item).stopCharging();
 		}
 		
-		return super.detach( container );
 	}
 	
 	@Override

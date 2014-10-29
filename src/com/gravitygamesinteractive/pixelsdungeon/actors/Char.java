@@ -17,6 +17,7 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon.actors;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
@@ -40,6 +41,7 @@ import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Sleep;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Slow;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Speed;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Terror;
+import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Vertigo;
 import com.gravitygamesinteractive.pixelsdungeon.actors.hero.Hero;
 import com.gravitygamesinteractive.pixelsdungeon.actors.hero.HeroSubClass;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Bestiary;
@@ -137,8 +139,9 @@ public abstract class Char extends Actor {
 			}
 			
 			// Refactoring needed!
-			int dr = this instanceof Hero && ((Hero)this).usingRanged && ((Hero)this).subClass == HeroSubClass.SNIPER ? 
-				0 : Random.IntRange( 0, enemy.dr() );
+			// FIXME
+			int dr = this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass == HeroSubClass.SNIPER ? 0 :
+			Random.IntRange( 0, enemy.dr() );
 			
 			int dmg = damageRoll();
 			int effectiveDamage = Math.max( dmg - dr, 0 );;
@@ -376,7 +379,9 @@ public abstract class Char extends Actor {
 			} else if (buff instanceof Bleeding) {
 
 				sprite.showStatus( CharSprite.NEGATIVE, "bleeding" );
+			} else if (buff instanceof Vertigo) {
 				
+				sprite.showStatus( CharSprite.NEGATIVE, "dizzy" );	
 			} else if (buff instanceof Sleep) {
 				sprite.idle();
 			}
@@ -450,6 +455,19 @@ public abstract class Char extends Actor {
 	}
 	
 	public void move( int step ) {
+		
+		if (buff( Vertigo.class ) != null) {
+			ArrayList<Integer> candidates = new ArrayList<Integer>();
+			for (int dir : Level.NEIGHBOURS8) {
+			int p = pos + dir;
+			if ((Level.passable[p] || Level.avoid[p]) && Actor.findChar( p ) == null) {
+			candidates.add( p );
+			}
+			}
+			
+			step = Random.element( candidates );
+			}
+		
 		if (Dungeon.level.map[pos] == Terrain.OPEN_DOOR) {
 			Door.leave( pos );
 		}

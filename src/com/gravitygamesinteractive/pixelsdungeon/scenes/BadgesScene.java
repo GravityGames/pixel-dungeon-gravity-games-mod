@@ -29,6 +29,7 @@ import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.NinePatch;
 import com.watabou.noosa.audio.Music;
+import com.gravitygamesinteractive.pixelsdungeon.ui.ExitButton;
 
 public class BadgesScene extends PixelScene {
 	
@@ -51,8 +52,8 @@ public class BadgesScene extends PixelScene {
 		archs.setSize( w, h );
 		add( archs );
 		
-		int pw = Math.min( 160, w - 10 );
-		int ph = h - 24;
+		int pw = Math.min( 160, w - 6 );
+		int ph = h - 30;
 		
 		NinePatch panel = Chrome.get( Chrome.Type.WINDOW );
 		panel.size( pw, ph );
@@ -77,6 +78,10 @@ public class BadgesScene extends PixelScene {
 			panel.y + panel.marginTop(), 
 			panel.innerWidth(), 
 			panel.innerHeight() );
+		
+		ExitButton btnExit = new ExitButton();
+		btnExit.setPos( Camera.main.width - btnExit.width(), 0 );
+		add( btnExit );
 		
 		fadeIn();
 	}

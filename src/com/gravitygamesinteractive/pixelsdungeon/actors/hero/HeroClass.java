@@ -59,6 +59,8 @@ public enum HeroClass {
 		
 		hero.heroClass = this;
 		
+		initCommon( hero );
+		
 		switch (this) {
 		case KYLE:
 			initKyle( hero );
@@ -93,7 +95,37 @@ public enum HeroClass {
 			break;
 		}
 		
+		if (Badges.isUnlocked( masteryBadge() )) {
+			new TomeOfMastery().collect();
+		}
+		
 		hero.updateAwareness();
+	}
+	
+	private static void initCommon( Hero hero ) {
+		//(hero.belongings.armor = new ClothArmor()).identify();
+		new Food().identify().collect();
+	}
+	public Badges.Badge masteryBadge() {
+		switch (this) {
+		case KYLE:
+			return Badges.Badge.MASTERY_KYLE;
+		case IRIS:
+			return Badges.Badge.MASTERY_IRIS;
+		case CHOMP:
+			return Badges.Badge.MASTERY_CHOMP;
+		case WHOMP:
+			return Badges.Badge.MASTERY_WHOMP;
+		case BLAZE:
+			return Badges.Badge.MASTERY_BLAZE;
+		case ASH:
+			return Badges.Badge.MASTERY_ASH;
+		case SHADE:
+			return Badges.Badge.MASTERY_SHADE;
+		case BYTT:
+			return Badges.Badge.MASTERY_BYTT;
+		}
+		return null;
 	}
 	
 	private static void initKyle( Hero hero ) {
@@ -102,12 +134,8 @@ public enum HeroClass {
 		(hero.belongings.weapon = new PlasticHammerKyle()).identify();
 		//(hero.belongings.armor = new ClothArmor()).identify();
 		new Dart( 8 ).identify().collect();
-		new Food().identify().collect();
-		new PotionBag().collect();
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_KYLE )) {
-			new TomeOfMastery().collect();
-		}
+		//new Food().identify().collect();
+		new PotionBag().collect();	
 		
 		Dungeon.quickslot = Dart.class;
 		
@@ -116,15 +144,11 @@ public enum HeroClass {
 	
 	private static void initIris( Hero hero ) {	
 		(hero.belongings.weapon = new Knuckles()).identify();
-		(hero.belongings.armor = new ClothArmor()).identify();
-		new Food().identify().collect();
+		//(hero.belongings.armor = new ClothArmor()).identify();
+		//new Food().identify().collect();
 		
 		WandOfMagicMissile wand = new WandOfMagicMissile();
 		wand.identify().collect();
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_IRIS )) {
-			new TomeOfMastery().collect();
-		}
 		
 		Dungeon.quickslot = wand;
 		
@@ -133,16 +157,12 @@ public enum HeroClass {
 	
 	private static void initChomp( Hero hero ) {
 		(hero.belongings.weapon = new Dagger()).identify();
-		(hero.belongings.armor = new ClothArmor()).identify();
+		//(hero.belongings.armor = new ClothArmor()).identify();
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
-		new Food().identify().collect();
+		//new Food().identify().collect();
 		
 		hero.belongings.ring1.activate( hero );
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_CHOMP )) {
-			new TomeOfMastery().collect();
-		}
 		
 		Dungeon.quickslot = Dart.class;
 		
@@ -154,30 +174,22 @@ public enum HeroClass {
 		hero.HP = (hero.HT -= 5);
 		
 		(hero.belongings.weapon = new Dagger()).identify();
-		(hero.belongings.armor = new ClothArmor()).identify();
+		//(hero.belongings.armor = new ClothArmor()).identify();
 		Boomerang boomerang = new Boomerang();
 		boomerang.identify().collect();
-		new Food().identify().collect();
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_WHOMP )) {
-			new TomeOfMastery().collect();
-		}
+		//new Food().identify().collect();
 		
 		Dungeon.quickslot = boomerang;
 	}
 	
 	private static void initBlaze( Hero hero ) {
 		(hero.belongings.weapon = new Dagger()).identify();
-		(hero.belongings.armor = new ClothArmor()).identify();
+		//(hero.belongings.armor = new ClothArmor()).identify();
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
-		new Food().identify().collect();
+		//new Food().identify().collect();
 		
 		hero.belongings.ring1.activate( hero );
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_BLAZE )) {
-			new TomeOfMastery().collect();
-		}
 		
 		Dungeon.quickslot = Dart.class;
 		
@@ -186,16 +198,12 @@ public enum HeroClass {
 	
 	private static void initAsh( Hero hero ) {
 		(hero.belongings.weapon = new Dagger()).identify();
-		(hero.belongings.armor = new ClothArmor()).identify();
+		//(hero.belongings.armor = new ClothArmor()).identify();
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
-		new Food().identify().collect();
+		//new Food().identify().collect();
 		
 		hero.belongings.ring1.activate( hero );
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_ASH )) {
-			new TomeOfMastery().collect();
-		}
 		
 		Dungeon.quickslot = Dart.class;
 		
@@ -204,16 +212,12 @@ public enum HeroClass {
 	
 	private static void initShade( Hero hero ) {
 		(hero.belongings.weapon = new Dagger()).identify();
-		(hero.belongings.armor = new ClothArmor()).identify();
+		//(hero.belongings.armor = new ClothArmor()).identify();
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
-		new Food().identify().collect();
+		//new Food().identify().collect();
 		
 		hero.belongings.ring1.activate( hero );
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_SHADE )) {
-			new TomeOfMastery().collect();
-		}
 		
 		Dungeon.quickslot = Dart.class;
 		
@@ -222,16 +226,12 @@ public enum HeroClass {
 	
 	private static void initBytt( Hero hero ) {
 		(hero.belongings.weapon = new Dagger()).identify();
-		(hero.belongings.armor = new ClothArmor()).identify();
+		//(hero.belongings.armor = new ClothArmor()).identify();
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
-		new Food().identify().collect();
+		//new Food().identify().collect();
 		
 		hero.belongings.ring1.activate( hero );
-		
-		if (Badges.isUnlocked( Badges.Badge.MASTERY_BYTT )) {
-			new TomeOfMastery().collect();
-		}
 		
 		Dungeon.quickslot = Dart.class;
 		

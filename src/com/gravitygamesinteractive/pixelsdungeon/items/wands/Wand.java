@@ -147,7 +147,7 @@ public abstract class Wand extends KindOfWeapon {
 	
 	@Override
 	public boolean doUnequip( Hero hero, boolean collect ) {
-		charger.detach();
+		onDetach();
 		return super.doUnequip(hero, collect);
 	}
 	
@@ -190,9 +190,8 @@ public abstract class Wand extends KindOfWeapon {
 	}
 	
 	@Override
-	public Item detach( Bag container ) {
+	public void onDetach() {
 		stopCharging();
-		return super.detach( container );
 	}
 	
 	public void stopCharging() {

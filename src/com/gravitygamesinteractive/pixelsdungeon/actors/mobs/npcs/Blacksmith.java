@@ -27,7 +27,6 @@ import com.gravitygamesinteractive.pixelsdungeon.Journal;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Char;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Buff;
 import com.gravitygamesinteractive.pixelsdungeon.actors.hero.Hero;
-import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
 import com.gravitygamesinteractive.pixelsdungeon.items.EquipableItem;
 import com.gravitygamesinteractive.pixelsdungeon.items.Item;
 import com.gravitygamesinteractive.pixelsdungeon.items.quest.DarkGold;
@@ -44,7 +43,7 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
-public class Blacksmith extends Mob.NPC {
+public class Blacksmith extends NPC {
 
 	private static final String TXT_GOLD_1 =
 		"Hey human! Wanna be useful, eh? Take dis pickaxe and mine me some _dark gold ore_, _15 pieces_ should be enough. " +
@@ -194,7 +193,7 @@ public class Blacksmith extends Mob.NPC {
 			return "Select 2 different items, not the same item twice!";
 		}
 		
-		if (!item1.isSimilar( item2 )) {
+		if (item1.getClass() != item2.getClass()) {
 			return "Select 2 items of the same type!";
 		}
 		

@@ -17,16 +17,23 @@
  */
 package com.gravitygamesinteractive.pixelsdungeon;
 
+import javax.microedition.khronos.opengles.GL10;
+
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
 
 import com.gravitygamesinteractive.pixelsdungeon.scenes.GameScene;
+import com.gravitygamesinteractive.pixelsdungeon.scenes.PixelScene;
 import com.gravitygamesinteractive.pixelsdungeon.scenes.TitleScene;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
+import com.gravitygamesinteractive.pixelsdungeon.Preferences;
 
 public class PixelDungeon extends Game {
 	
@@ -83,9 +90,16 @@ public class PixelDungeon extends Game {
 		com.watabou.utils.Bundle.addAlias( 
 			com.gravitygamesinteractive.pixelsdungeon.items.rings.RingOfPower.class,
 			"com.watabou.pixeldungeon.items.rings.RingOfEnergy" );
+		// 1.7.2
+		com.watabou.utils.Bundle.addAlias(
+			com.gravitygamesinteractive.pixelsdungeon.plants.Dreamweed.class,
+			"com.watabou.pixeldungeon.plants.Blindweed" );
+		com.watabou.utils.Bundle.addAlias(
+			com.gravitygamesinteractive.pixelsdungeon.plants.Dreamweed.Seed.class,
+			"com.watabou.pixeldungeon.plants.Blindweed$Seed" );
 	}
 	
-	@SuppressWarnings("deprecation")
+	//@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
@@ -100,8 +114,11 @@ public class PixelDungeon extends Game {
 				View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY );
 		}*/
 		
-		Display display = instance.getWindowManager().getDefaultDisplay();
-		boolean landscape = display.getWidth() > display.getHeight();
+		updateImmersiveMode();
+		
+		DisplayMetrics metrics = new DisplayMetrics();
+		instance.getWindowManager().getDefaultDisplay().getMetrics( metrics );
+		boolean landscape = metrics.widthPixels > metrics.heightPixels;
 		
 		if (Preferences.INSTANCE.getBoolean( Preferences.KEY_LANDSCAPE, false ) != landscape) {
 			landscape( !landscape );
@@ -110,6 +127,18 @@ public class PixelDungeon extends Game {
 		Music.INSTANCE.enable( music() );
 		Sample.INSTANCE.enable( soundFx() );
 	}
+	
+	@Override
+	public void onWindowFocusChanged( boolean hasFocus ) {
+		super.onWindowFocusChanged( hasFocus );
+			if (hasFocus) {
+				updateImmersiveMode();
+			}
+		}
+		public static void switchNoFade( Class<? extends PixelScene> c ) {
+			PixelScene.noFade = true;
+			switchScene( c );
+		}
 	
 	/*
 	 * ---> Prefernces
@@ -125,6 +154,56 @@ public class PixelDungeon extends Game {
 	public static boolean landscape() {
 		return width > height;
 	}
+	
+	// *** IMMERSIVE MODE ****
+	
+		private static boolean immersiveModeChanged = false;
+		
+		@SuppressLint("NewApi")
+		public static void immerse( boolean value ) {
+			Preferences.INSTANCE.put( Preferences.KEY_IMMERSIVE, value );
+			
+			instance.runOnUiThread( new Runnable() {
+				@Override
+				public void run() {
+					updateImmersiveMode();
+					immersiveModeChanged = true;
+				}
+			} );
+		}
+		
+		@Override
+		public void onSurfaceChanged( GL10 gl, int width, int height ) {
+			super.onSurfaceChanged( gl, width, height );
+			
+			if (immersiveModeChanged) {
+				requestedReset = true;
+				immersiveModeChanged = false;
+			}
+		}
+		
+		@SuppressLint("NewApi")
+		public static void updateImmersiveMode() {
+			if (android.os.Build.VERSION.SDK_INT >= 19) {
+				instance.getWindow().getDecorView().setSystemUiVisibility( 
+					immersed() ?
+					View.SYSTEM_UI_FLAG_LAYOUT_STABLE | 
+					View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | 
+					View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | 
+					View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | 
+					View.SYSTEM_UI_FLAG_FULLSCREEN //| 
+					//View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY 
+					:
+					0 );
+			}
+		}
+		
+		public static boolean immersed() {
+			return Preferences.INSTANCE.getBoolean( Preferences.KEY_IMMERSIVE, false );
+		}
+		
+		// *****************************
+		
 	
 	public static void scaleUp( boolean value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_SCALE_UP, value );
@@ -186,6 +265,14 @@ public class PixelDungeon extends Game {
 	
 	public static int lastClass() {
 		return Preferences.INSTANCE.getInt( Preferences.KEY_LAST_CLASS, 0 );
+	}
+	
+	public static void challenges( int value ) {
+		Preferences.INSTANCE.put( Preferences.KEY_CHALLENGES, value );
+	}
+	
+	public static int challenges() {
+		return Preferences.INSTANCE.getInt( Preferences.KEY_CHALLENGES, 0 );
 	}
 	
 	public static void intro( boolean value ) {

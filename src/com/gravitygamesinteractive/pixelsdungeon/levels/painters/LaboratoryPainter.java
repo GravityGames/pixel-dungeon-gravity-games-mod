@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
-package com.gravitygamesinteractive.pixelsdungeon.levels.painters;
+	package com.gravitygamesinteractive.pixelsdungeon.levels.painters;
 
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.actors.blobs.Alchemy;
@@ -66,7 +66,7 @@ public class LaboratoryPainter extends Painter {
 		}
 		
 		entrance.set( Room.Door.Type.LOCKED );
-		level.addItemToSpawn( new IronKey( Dungeon.depth ) );
+		level.addItemToSpawn( new IronKey() );
 	}
 	
 	private static Item prize( Level level ) {

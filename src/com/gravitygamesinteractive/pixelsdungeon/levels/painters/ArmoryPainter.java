@@ -59,7 +59,7 @@ public class ArmoryPainter extends Painter {
 		}
 		
 		entrance.set( Room.Door.Type.LOCKED );
-		level.addItemToSpawn( new IronKey( Dungeon.depth ) );
+		level.addItemToSpawn( new IronKey() );
 	}
 	
 	private static Item prize( Level level ) {

@@ -25,7 +25,6 @@ import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Buff;
 import com.gravitygamesinteractive.pixelsdungeon.actors.hero.Hero;
 import com.gravitygamesinteractive.pixelsdungeon.actors.hero.HeroClass;
 import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob;
-import com.gravitygamesinteractive.pixelsdungeon.actors.mobs.Mob.State;
 import com.gravitygamesinteractive.pixelsdungeon.effects.CellEmitter;
 import com.gravitygamesinteractive.pixelsdungeon.effects.Speck;
 import com.gravitygamesinteractive.pixelsdungeon.items.wands.WandOfBlink;
@@ -89,12 +88,12 @@ public class ChompArmor extends ClassArmor {
 					return;
 				}
 				
-				curUser.HP /= 2;
+				curUser.HP -= (curUser.HP / 3);
 				
 				for (Mob mob : Dungeon.level.mobs) {
 					if (Level.fieldOfView[mob.pos]) {
 						Buff.prolong( mob, Blindness.class, 2 );
-						mob.state = State.WANDERING;
+						mob.state = mob.WANDERING;
 						mob.sprite.emitter().burst( Speck.factory( Speck.LIGHT ), 4 );
 					}
 				}

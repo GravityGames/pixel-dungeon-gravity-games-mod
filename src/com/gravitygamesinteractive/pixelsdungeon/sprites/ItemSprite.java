@@ -18,6 +18,7 @@
 package com.gravitygamesinteractive.pixelsdungeon.sprites;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
@@ -139,6 +140,9 @@ public class ItemSprite extends MovieClip {
 			place( from );
 	
 			speed.offset( (px-x) / DROP_INTERVAL, (py-y) / DROP_INTERVAL );
+			
+			Log.d( "GAME", toString() );
+			Log.d( "GAME", String.format( "drop aside: %.1f %.1f", speed.x, speed.y ) );
 		}
 	}
 	

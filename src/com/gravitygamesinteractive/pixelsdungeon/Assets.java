@@ -43,6 +43,7 @@ public class Assets {
 	public static final String SHADE	= "shade.png";
 	public static final String BYTT	= "bytt.png";
 	public static final String AVATARS	= "avatars.png";
+	public static final String PET		= "pet.png";
 	
 	public static final String SURFACE	= "surface.png";
 	

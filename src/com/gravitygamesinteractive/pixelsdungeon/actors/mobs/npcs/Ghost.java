@@ -20,6 +20,7 @@ package com.gravitygamesinteractive.pixelsdungeon.actors.mobs.npcs;
 import java.util.HashSet;
 
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
+import com.gravitygamesinteractive.pixelsdungeon.Challenges;
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.Journal;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Actor;
@@ -35,6 +36,7 @@ import com.gravitygamesinteractive.pixelsdungeon.effects.Speck;
 import com.gravitygamesinteractive.pixelsdungeon.items.Generator;
 import com.gravitygamesinteractive.pixelsdungeon.items.Item;
 import com.gravitygamesinteractive.pixelsdungeon.items.armor.Armor;
+import com.gravitygamesinteractive.pixelsdungeon.items.armor.ClothArmor;
 import com.gravitygamesinteractive.pixelsdungeon.items.quest.DriedRose;
 import com.gravitygamesinteractive.pixelsdungeon.items.quest.RatSkull;
 import com.gravitygamesinteractive.pixelsdungeon.items.weapon.Weapon;
@@ -49,7 +51,7 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
-public class Ghost extends Mob.NPC {
+public class Ghost extends NPC {
 
 	{
 		name = "sad ghost";
@@ -57,7 +59,7 @@ public class Ghost extends Mob.NPC {
 		
 		flying = true;
 		
-		state = State.WANDERING;
+		state = WANDERING;
 	}
 	
 	private static final String TXT_ROSE1	=
@@ -280,7 +282,11 @@ public class Ghost extends Mob.NPC {
 				do {
 					weapon = (Weapon)Generator.random( Generator.Category.WEAPON );
 				} while (weapon instanceof MissileWeapon);
-				armor = (Armor)Generator.random( Generator.Category.ARMOR );
+				if (Dungeon.isChallenged( Challenges.NO_ARMOR )) {
+					armor = (Armor)new ClothArmor().degrade();
+					} else {
+					armor = (Armor)Generator.random( Generator.Category.ARMOR );
+					}
 					
 				for (int i=0; i < 3; i++) {
 					Item another;
@@ -305,7 +311,7 @@ public class Ghost extends Mob.NPC {
 				if (alternative) {
 					
 					FetidRat rat = new FetidRat();
-					rat.state = Mob.State.WANDERING;
+					//rat.state = Mob.State.WANDERING;
 					rat.pos = Dungeon.level.randomRespawnCell();
 					if (rat.pos != -1) {
 						GameScene.add( rat );
@@ -344,6 +350,8 @@ public class Ghost extends Mob.NPC {
 			
 			EXP = 0;
 			maxLvl = 5;	
+			
+			state = WANDERING;
 		}
 		
 		@Override

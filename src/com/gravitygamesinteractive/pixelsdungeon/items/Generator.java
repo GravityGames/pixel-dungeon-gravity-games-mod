@@ -35,6 +35,7 @@ import com.gravitygamesinteractive.pixelsdungeon.items.weapon.*;
 import com.gravitygamesinteractive.pixelsdungeon.items.weapon.melee.*;
 import com.gravitygamesinteractive.pixelsdungeon.items.weapon.missiles.*;
 import com.gravitygamesinteractive.pixelsdungeon.plants.*;
+import com.gravitygamesinteractive.pixelsdungeon.plants.Dreamweed;
 import com.watabou.utils.Random;
 
 public class Generator {
@@ -180,7 +181,7 @@ public class Generator {
 			Firebloom.Seed.class,
 			Icecap.Seed.class,
 			Sorrowmoss.Seed.class,
-			Blindweed.Seed.class,
+			Dreamweed.Seed.class,
 			Sungrass.Seed.class,
 			Earthroot.Seed.class,
 			Fadeleaf.Seed.class,

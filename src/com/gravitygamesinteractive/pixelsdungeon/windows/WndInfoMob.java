@@ -44,7 +44,9 @@ public class WndInfoMob extends WndTitledMessage {
 		
 		StringBuilder builder = new StringBuilder( mob.description() );
 		
-		switch (mob.state) {
+		builder.append( "\n\n" + mob.state.status() + "." );
+		
+		/*switch (mob.state) {
 		case SLEEPING:
 			builder.append( String.format( TXT_SLEEPNIG, mob.name ) );
 			break;
@@ -60,7 +62,7 @@ public class WndInfoMob extends WndTitledMessage {
 		case PASSIVE:
 			builder.append( String.format( TXT_PASSIVE, mob.name ) );
 			break;
-		}
+		}*/
 		
 		return builder.toString();
 	}

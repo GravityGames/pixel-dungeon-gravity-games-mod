@@ -33,6 +33,7 @@ public class WndSettings extends Window {
 	private static final String TXT_ZOOM_DEFAULT	= "Default Zoom";
 
 	private static final String TXT_SCALE_UP		= "Scale up UI";
+	private static final String TXT_IMMERSIVE		= "Immersive mode";
 	
 	private static final String TXT_MUSIC	= "Music";
 	
@@ -52,6 +53,8 @@ public class WndSettings extends Window {
 	
 	public WndSettings( boolean inGame ) {
 		super();
+		
+		CheckBox btnImmersive = null;
 		
 		if (inGame) {
 			int w = BTN_HEIGHT;
@@ -95,6 +98,18 @@ public class WndSettings extends Window {
 			btnScaleUp.checked( PixelDungeon.scaleUp() );
 			add( btnScaleUp );
 			
+			btnImmersive = new CheckBox( TXT_IMMERSIVE ) {
+				@Override
+				protected void onClick() {
+					super.onClick();
+					PixelDungeon.immerse( checked() );
+				}
+			};
+			btnImmersive.setRect( 0, btnScaleUp.bottom() + GAP, WIDTH, BTN_HEIGHT );
+			btnImmersive.checked( PixelDungeon.immersed() );
+			btnImmersive.enable( android.os.Build.VERSION.SDK_INT >= 19 );
+			add( btnImmersive );
+			
 		}
 		
 		CheckBox btnMusic = new CheckBox( TXT_MUSIC ) {
@@ -104,7 +119,7 @@ public class WndSettings extends Window {
 				PixelDungeon.music( checked() );
 			}
 		};
-		btnMusic.setRect( 0, BTN_HEIGHT + GAP, WIDTH, BTN_HEIGHT );
+		btnMusic.setRect( 0, (btnImmersive != null ? btnImmersive.bottom() : BTN_HEIGHT) + GAP, WIDTH, BTN_HEIGHT );
 		btnMusic.checked( PixelDungeon.music() );
 		add( btnMusic );
 		

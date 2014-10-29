@@ -20,6 +20,7 @@ package com.gravitygamesinteractive.pixelsdungeon.windows;
 import java.io.IOException;
 
 import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
+import com.gravitygamesinteractive.pixelsdungeon.PixelDungeon;
 import com.gravitygamesinteractive.pixelsdungeon.scenes.GameScene;
 import com.gravitygamesinteractive.pixelsdungeon.scenes.InterlevelScene;
 import com.gravitygamesinteractive.pixelsdungeon.scenes.RankingsScene;
@@ -32,6 +33,7 @@ import com.watabou.noosa.Game;
 public class WndGame extends Window {
 	
 	private static final String TXT_SETTINGS	= "Settings";
+	private static final String TXT_CHALLEGES	= "Challenges";
 	private static final String TXT_RANKINGS	= "Rankings";
 	private static final String TXT_START		= "Start New Game";
 	private static final String TXT_MENU		= "Main Menu";
@@ -56,6 +58,16 @@ public class WndGame extends Window {
 			}
 		} );
 		
+		if (Dungeon.challenges > 0) {
+			addButton( new RedButton( TXT_CHALLEGES ) {
+				@Override
+				protected void onClick() {
+					hide();
+					GameScene.show( new WndChallenges( Dungeon.challenges, false ) );
+				}
+			} );
+		}
+		
 		// Restart
 		if (!Dungeon.hero.isAlive()) {
 			
@@ -64,6 +76,7 @@ public class WndGame extends Window {
 				@Override
 				protected void onClick() {
 					Dungeon.hero = null;
+					PixelDungeon.challenges( Dungeon.challenges );
 					InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 					InterlevelScene.noStory = true;
 					Game.switchScene( InterlevelScene.class );

@@ -28,20 +28,6 @@ public class SkeletonKey extends Key {
 		stackable = false;
 	}
 	
-	public SkeletonKey() {
-		this( 0 );
-	}
-	
-	public SkeletonKey( int depth ) {
-		super();
-		this.depth = depth;
-	}
-	
-	@Override
-	public boolean isSimilar( Item item ) {
-		return false;
-	}
-	
 	@Override
 	public String info() {
 		return 

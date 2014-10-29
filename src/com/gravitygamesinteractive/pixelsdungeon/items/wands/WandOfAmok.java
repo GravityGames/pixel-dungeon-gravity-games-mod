@@ -18,10 +18,12 @@
 package com.gravitygamesinteractive.pixelsdungeon.items.wands;
 
 import com.gravitygamesinteractive.pixelsdungeon.Assets;
+import com.gravitygamesinteractive.pixelsdungeon.Dungeon;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Actor;
 import com.gravitygamesinteractive.pixelsdungeon.actors.Char;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Amok;
 import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Buff;
+import com.gravitygamesinteractive.pixelsdungeon.actors.buffs.Vertigo;
 import com.gravitygamesinteractive.pixelsdungeon.effects.MagicMissile;
 import com.gravitygamesinteractive.pixelsdungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
@@ -38,7 +40,11 @@ public class WandOfAmok extends Wand {
 		Char ch = Actor.findChar( cell );
 		if (ch != null) {
 			
-			Buff.affect( ch, Amok.class, 3f + level() );
+			if (ch == Dungeon.hero) {
+				Buff.affect( ch, Vertigo.class, Vertigo.duration( ch ) );
+				} else {
+				Buff.affect( ch, Amok.class, 3f + level() );
+				}
 
 		} else {
 			
